@@ -2,7 +2,7 @@
 Repository to make an example api using the MySQL database
 
 ## Paquetes utilizados
-**express:** Framework para el back
+- **express:** Framework para el back
 - **express-handlebars:** Integración del motor de plantillas handlebars en expres.
 - **express-session:** Administra las sesiones de la app.
 - **mysql:** Se conecta y hace consultas a la base de datos.
