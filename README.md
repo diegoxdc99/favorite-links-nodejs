@@ -14,6 +14,7 @@ Repository to make an example api using the MySQL database
 - **connect-flash:** Mostrar mensajes de exito o error al realizar una acción.
 - **morgan:** permite crear logs de las peticiones al servidor
 - **express-validator:** Valida los datos que le llegan a la petición.
+- **dotenv:** Cargar variables de ambiente.
 
 Desarrollo
 - **nodemon:** Reinicia el servidor al haber cambios.
