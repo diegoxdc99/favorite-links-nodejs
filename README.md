@@ -27,4 +27,5 @@ carpetas
 	- **routes:** Sistema de rutas para el api
 	- **views:** vistas de la aplicación
 		- **layout:** Partes comunes de la aplicación (header, nav, etc).
+		- **links:** Vista relacionada con los enlaces.
 		- **partials:** Partes de las vistas que se usan en varias partes.
