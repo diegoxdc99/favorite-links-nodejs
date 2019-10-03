@@ -28,4 +28,5 @@ carpetas
 	- **views:** vistas de la aplicación
 		- **layout:** Partes comunes de la aplicación (header, nav, etc).
 		- **links:** Vista relacionada con los enlaces.
+		- **auth:** Vistas para la autenticación del usuario.
 		- **partials:** Partes de las vistas que se usan en varias partes.

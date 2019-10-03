@@ -14,14 +14,11 @@ router.post('/add', async (req, res) => {
     url,
     description
   }
+  // req.session.contador = req.session.contador ? req.session.contador + 1 : 1
+  // res.send({cont: req.session.contador})
   await pool.query('INSERT INTO links set ?', [newLink])
   req.flash('success', 'Link guardado correctamente')
   res.redirect('/links')
-})
-
-router.get('/', async (req, res) => {
-  const links = await pool.query('SELECT * FROM links')
-  res.render('links/list', { links })
 })
 
 router.get('/', async (req, res) => {

@@ -4,13 +4,15 @@ const exphbs = require('express-handlebars')
 const path = require('path')
 const flash = require('connect-flash')
 const session = require('express-session')
-const MySQLStore = require('express-mysql-session');
+const MySQLStore = require('express-mysql-session')
+const passport = require('passport')
 require('dotenv').config()
 
 const { database } = require('./keys')
 
 // Initializations
 const app = express()
+require('./lib/passport')
 
 // Settings
 app.set('port', process.env.PORT || 4000)
@@ -27,18 +29,19 @@ app.set('view engine', '.hbs')
 // Middleware
 app.use(session({
   secret: 'DiegoMysqlSession',
-  resave: false, // no se renove la sesión
-  saveUninitialized: false, // no se vuelva a establecer la sesión
+  resave: false, // cada vez que se llame una ruta guardaría la sesion
+  saveUninitialized: false, // No guarda el objeto vacio
   store: new MySQLStore(database)
 
 }))
 app.use(flash())
 app.use(morgan('dev'))
+app.use(passport.initialize()) // indicar a passport que inice
+app.use(passport.session()) // Para guardar los datos de passport
 // Aceptar desde los formularios los datos que envien los usuarios
 // extended false para indicar que son datos sencillos (sin imagenes)
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json()) // habilita enviar y recibir json
-
 
 // Global Variables
 app.use((req, res, next) => {
