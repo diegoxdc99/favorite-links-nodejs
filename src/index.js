@@ -6,6 +6,8 @@ const flash = require('connect-flash')
 const session = require('express-session')
 const MySQLStore = require('express-mysql-session')
 const passport = require('passport')
+const { isLoggedIn } = require('./lib/auth')
+
 require('dotenv').config()
 
 const { database } = require('./keys')
@@ -46,12 +48,14 @@ app.use(express.json()) // habilita enviar y recibir json
 // Global Variables
 app.use((req, res, next) => {
   app.locals.success = req.flash('success')
+  app.locals.message = req.flash('message')
+  app.locals.user = req.user
   next()
 })
 // Routes
 app.use(require('./routes'))
 app.use(require('./routes/authentication'))
-app.use('/links', require('./routes/links'))
+app.use('/links', isLoggedIn, require('./routes/links'))
 
 // Public
 app.use(express.static(path.join(__dirname, 'public')))
